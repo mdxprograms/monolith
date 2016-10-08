@@ -17,6 +17,7 @@ const SUBS = [
   {key: 'space', value: 'Space'},
   {key: 'npr', value: 'NPR'},
   {key: 'stocks', value: 'Stocks'},
+  {key: 'gif', value: 'gif'},
   {key: 'dccomics', value: 'DC Comics'}
 ];
 
