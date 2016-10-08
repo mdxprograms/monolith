@@ -1,0 +1,22 @@
+.navbar .container {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar-header {
+  margin-right: auto !important;
+}
+.menu-list {
+  padding: .5rem 2rem;
+}
+
+.menu-list ul {
+  background: #fff;
+}
+
+@media(min-width: 480px) {
+
+}
