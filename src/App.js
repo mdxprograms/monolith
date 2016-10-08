@@ -9,6 +9,14 @@ import Headroom from 'react-headroom';
 import axios from 'axios';
 import './App.css';
 
+const SUBS = [
+  {key: 'reactjs', value: 'React'},
+  {key: 'javascript', value: 'Javascript'},
+  {key: 'webdev', value: 'Webdev'},
+  {key: 'stocks', value: 'Stocks'},
+  {key: 'dccomics', value: 'DC Comics'}
+];
+
 class App extends Component {
   constructor() {
     super();
@@ -44,10 +52,9 @@ class App extends Component {
             </Navbar.Header>
             <Nav>
               <DropdownButton onSelect={this.fetchSub.bind(this)} className="menu-list" bsStyle="primary" eventKey={1} title="Reddit" id="reddit-select">
-                <MenuItem eventKey={"reactjs"}>Reactjs</MenuItem>
-                <MenuItem eventKey={"javascript"}>Javascript</MenuItem>
-                <MenuItem eventKey={"stocks"}>Stocks</MenuItem>
-                <MenuItem eventKey={"webdev"}>Webdev</MenuItem>
+                {SUBS.map((sub) =>
+                  <MenuItem eventKey={sub.key}>{sub.value}</MenuItem>
+                )}
               </DropdownButton>
             </Nav>
           </Navbar>
