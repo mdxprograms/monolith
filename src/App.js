@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   fetchSub(sub) {
-    axios.get(`http://www.reddit.com/r/${sub}.json`)
+    axios.get(`//www.reddit.com/r/${sub}.json`)
       .then(res => {
         const posts = res.data.data.children.map(obj => obj.data);
         console.log(posts);
