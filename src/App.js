@@ -3,11 +3,9 @@ import {
   Navbar,
   Nav,
   DropdownButton,
-  MenuItem,
-  Grid,
-  Row,
-  Col
+  MenuItem
 } from 'react-bootstrap';
+import Headroom from 'react-headroom';
 import axios from 'axios';
 import './App.css';
 
@@ -16,7 +14,7 @@ class App extends Component {
     super();
     this.state = {
       posts: [],
-      sub: 'react'
+      sub: 'reactjs'
     };
   }
 
@@ -27,44 +25,46 @@ class App extends Component {
         this.setState({posts});
       });
 
-    this.setState({sub});
+    this.setState({sub: sub});
   }
 
   componentDidMount() {
-    this.fetchSub('reactjs');
+    this.fetchSub(this.state.sub);
   }
 
   render() {
     return (
       <div className="App">
-        <Navbar>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="/">Monolith</a>
-            </Navbar.Brand>
-          </Navbar.Header>
-          <Nav>
-            <DropdownButton onChange={this.fetchSub.bind(this)} className="menu-list" bsStyle="primary" eventKey={1} title="Reddit" id="reddit-select">
-              <MenuItem eventKey={1.1}>Reactjs</MenuItem>
-              <MenuItem eventKey={1.2}>Javascript</MenuItem>
-              <MenuItem eventKey={1.3}>Stocks</MenuItem>
-              <MenuItem eventKey={1.4}>Webdev</MenuItem>
-            </DropdownButton>
-          </Nav>
-        </Navbar>
-        <h1>Reddit Feed</h1>
-        <Grid className="row">
-          <Row className="show-grid">
+        <Headroom>
+          <Navbar>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <a href="/">Monolith</a>
+              </Navbar.Brand>
+            </Navbar.Header>
+            <Nav>
+              <DropdownButton onSelect={this.fetchSub.bind(this)} className="menu-list" bsStyle="primary" eventKey={1} title="Reddit" id="reddit-select">
+                <MenuItem eventKey={"reactjs"}>Reactjs</MenuItem>
+                <MenuItem eventKey={"javascript"}>Javascript</MenuItem>
+                <MenuItem eventKey={"stocks"}>Stocks</MenuItem>
+                <MenuItem eventKey={"webdev"}>Webdev</MenuItem>
+              </DropdownButton>
+            </Nav>
+          </Navbar>
+        </Headroom>
+        <h1 className="text-primary">/r/{this.state.sub}</h1>
+        <div className="row">
+          <section className="item-collection">
             {this.state.posts.map(post =>
-              <Col key={post.id} sm={6} md={3}>
+              <a key={post.id} className="col-sm-12 col-md-6 col-lg-4 item" target="_blank" href={post.url}>
+                <h4 className="text-default">{post.title}</h4>
                 {post.preview ?
-                  <img src={post.preview.images[0].source.url} alt=""/>
-                : null}
-                <a target="_blank" href={post.url}>{post.title}</a>
-              </Col>
+                  <img className="col-sm-12 img-responsive" src={post.preview.images[0].source.url} alt=""/>
+                : <img className="col-sm-12 img-responsive" src="https://camo.githubusercontent.com/b13830f5a9baecd3d83ef5cae4d5107d25cdbfbe/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f3732313033382f313732383830352f35336532613364382d363262352d313165332d383964312d3934376632373062646430332e706e67" alt=""/>}
+              </a>
             )}
-          </Row>
-        </Grid>
+          </section>
+        </div>
       </div>
     );
   }

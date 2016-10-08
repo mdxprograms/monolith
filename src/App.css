@@ -1,8 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .navbar .container {
   align-items: center;
   display: flex;
   justify-content: space-around;
-  position: fixed;
   width: 100%;
 }
 
@@ -15,6 +19,45 @@
 
 .menu-list ul {
   background: #fff;
+}
+
+.row {
+  text-align: center;
+}
+
+.App h1 {
+  text-align: center;
+}
+
+.item-collection {
+  align-items:stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.item {
+  box-shadow: 1px 4px 4px #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem .5rem;
+  transition: all .4s;
+  width: 43rem;
+}
+
+.item:hover {
+  background: #0d87e9;
+}
+
+.item:hover h4 {
+  color: #fff;
+}
+
+.item img {
+  margin: auto;
 }
 
 @media(min-width: 480px) {
