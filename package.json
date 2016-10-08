@@ -59,6 +59,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "deploy": "git push origin `git subtree split --prefix build master`:gh-pages",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
