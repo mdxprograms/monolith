@@ -54,7 +54,8 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",
-    "react-headroom": "^2.1.2"
+    "react-headroom": "^2.1.2",
+    "react-html-parser": "^1.0.3"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -89,8 +90,8 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "engineStrict" : true,
+  "engineStrict": true,
   "engines": {
-      "node": "6.7.0"
+    "node": "6.7.0"
   }
 }
