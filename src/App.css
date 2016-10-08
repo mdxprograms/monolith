@@ -9,7 +9,7 @@ body {
 }
 
 .navbar .container {
-  align-items:flex-start;
+  align-items: center;
   display: flex;
   justify-content: space-between;
   width: 100%;
