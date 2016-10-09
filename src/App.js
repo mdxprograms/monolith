@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {browserHistory} from 'react-router';
 import axios from 'axios';
 import './App.css';
 import {Header} from './Header';
@@ -14,8 +15,14 @@ class App extends Component {
     this.fetchSub = this.fetchSub.bind(this);
   }
 
+  componentWillMount() {
+    if (window.sessionStorage.getItem('sub')) {
+      this.fetchSub(window.sessionStorage.getItem('sub'));
+    }
+  }
+
   fetchSub(sub) {
-    this.props.history.push("/");
+    browserHistory.push("/");
     axios.get(`//www.reddit.com/r/${sub}.json`)
       .then(res => {
         const posts = res.data.data.children.map(obj => obj.data);
@@ -23,6 +30,7 @@ class App extends Component {
       });
 
     this.setState({sub: sub});
+    window.sessionStorage.setItem('sub', sub);
     document.body.scrollTop = 0;
   }
 
