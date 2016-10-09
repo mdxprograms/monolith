@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import {ItemView} from '../ItemView';
 
 export const ItemList = ({posts}) => (
   <div className="row">
     <section className="item-collection">
       {posts.map(post =>
-        <a onClick={<ItemView post={post} showModal={true} />} key={post.id} className="col-sm-12 col-md-6 col-lg-4 item" target="_blank" href={post.url}>
+        <a key={post.id} className="col-sm-12 col-md-6 col-lg-4 item" target="_blank" href={post.url}>
           <h4 className="text-primary">{ReactHtmlParser(post.title)}</h4>
           {post.thumbnail && post.thumbnail !== "default" && post.thumbnail !== "self" && post.thumbnail !== "nsfw" ?
             <img className="col-sm-12 img-responsive" src={post.thumbnail} alt=""/>

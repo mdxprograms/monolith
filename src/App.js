@@ -23,6 +23,7 @@ class App extends Component {
       });
 
     this.setState({sub: sub});
+    document.body.scrollTop = 0;
   }
 
   render() {
