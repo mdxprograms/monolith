@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   fetchSub(sub) {
+    this.props.history.push("/");
     axios.get(`//www.reddit.com/r/${sub}.json`)
       .then(res => {
         const posts = res.data.data.children.map(obj => obj.data);
@@ -30,7 +31,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header fetchSub={this.fetchSub} sub={this.state.sub}/>
-        {this.state.posts.length ? <ItemList posts={this.state.posts} /> : null}
+        {this.props.children ?
+          this.props.children
+        : <ItemList posts={this.state.posts} />}
       </div>
     );
   }
