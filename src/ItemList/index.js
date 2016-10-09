@@ -2,7 +2,7 @@ import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import {Link} from 'react-router';
 
-export const ItemList = ({posts}) => (
+export const ItemList = ({posts, sub}) => (
   <div className="row">
     <section className="item-collection">
       {posts.map(post =>

@@ -11,7 +11,6 @@ class App extends Component {
       posts: [],
       sub: null
     };
-
     this.fetchSub = this.fetchSub.bind(this);
   }
 
@@ -33,7 +32,7 @@ class App extends Component {
         <Header fetchSub={this.fetchSub} sub={this.state.sub}/>
         {this.props.children ?
           this.props.children
-        : <ItemList posts={this.state.posts} />}
+        : <ItemList posts={this.state.posts} sub={this.state.sub} />}
       </div>
     );
   }

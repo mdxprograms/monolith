@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import App from '../App';
 import './item-view.css';
 
 export default class ItemView extends Component {
   render() {
+    let {url} = this.props.location.query;
+    if (url.includes('reddit.com')) {
+      window.open(url);
+    }
     return (
       <div className="item-embed">
-        <h4>Will be embeded in page shortly!</h4>
-        <p>
-          Post <a target="_blank" href={this.props.location.query.url.replace("watch?v=", "embed/")}>{this.props.location.query.url.replace("watch?v=", "embed/")}</a>
-        </p>
+        <iframe src={url.replace("watch?v=", "embed/")} frameborder="0"></iframe>
       </div>
     )
   }
