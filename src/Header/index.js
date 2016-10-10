@@ -9,7 +9,12 @@ import Headroom from 'react-headroom';
 import {SUBS, THEMES} from '../data';
 
 export const Header = ({fetchSub, sub, setTheme, theme}) =>
-  <Headroom>
+  <Headroom upTolerance={0} style={{
+    webkitTransition: 'all .5s ease-in-out',
+    mozTransition: 'all .5s ease-in-out',
+    oTransition: 'all .5s ease-in-out',
+    transition: 'all .5s ease-in-out'
+  }}>
     <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
