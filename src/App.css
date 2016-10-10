@@ -19,7 +19,7 @@ body {
 }
 
 .navbar ul {
-  background: transparent;
+  opacity: .9;
 }
 
 .navbar-header {
