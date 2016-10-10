@@ -1,3 +1,3 @@
 # Monolith
 
-My personal dashboard
+My react dashboard for reddit reading
