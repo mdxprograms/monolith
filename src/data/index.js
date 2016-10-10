@@ -10,3 +10,8 @@ export const SUBS = [
   {key: 'gif', value: 'gif'},
   {key: 'dccomics', value: 'DC Comics'}
 ];
+
+export const THEMES = [
+  'paper', 'cosmo', 'darkly', 'journal', 'lumen', 'spacelab',
+  'superhero', 'yeti'
+];

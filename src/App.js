@@ -10,14 +10,32 @@ class App extends Component {
     super();
     this.state = {
       posts: [],
-      sub: null
+      sub: null,
+      theme: 'paper'
     };
     this.fetchSub = this.fetchSub.bind(this);
+    this.setTheme = this.setTheme.bind(this);
   }
 
   componentWillMount() {
-    if (window.sessionStorage.getItem('sub')) {
-      this.fetchSub(window.sessionStorage.getItem('sub'));
+    this.getSub();
+    this.getTheme();
+  }
+
+  getTheme() {
+    let sessionTheme = window.sessionStorage.getItem('theme');
+    this.setState({theme: sessionTheme || this.state.theme});
+  }
+
+  setTheme(theme) {
+    this.setState({theme: theme});
+    window.sessionStorage.setItem('theme', theme);
+  }
+
+  getSub() {
+    let sessionSub = window.sessionStorage.getItem('sub');
+    if (sessionSub) {
+      this.fetchSub(sessionSub);
     }
   }
 
@@ -35,9 +53,12 @@ class App extends Component {
   }
 
   render() {
+    let themeLink = document.getElementById('theme');
+    themeLink.href = `https://bootswatch.com/${this.state.theme}/bootstrap.min.css`
+
     return (
       <div className="App">
-        <Header fetchSub={this.fetchSub} sub={this.state.sub}/>
+        <Header theme={this.state.theme} setTheme={this.setTheme} fetchSub={this.fetchSub} sub={this.state.sub}/>
         {this.props.children ?
           this.props.children
         : <ItemList posts={this.state.posts} sub={this.state.sub} />}
