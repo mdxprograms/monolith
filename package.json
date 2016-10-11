@@ -54,7 +54,6 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.5",
     "react-dom": "^15.3.2",
-    "react-headroom": "^2.1.2",
     "react-html-parser": "^1.0.3",
     "react-router": "^2.8.1"
   },
