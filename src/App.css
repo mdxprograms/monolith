@@ -23,9 +23,12 @@ body {
 }
 
 .App {
-  margin-top: 6rem;
+  margin: 4rem 0;
   padding: 2% 0;
-  width: 100%;
+}
+
+.App .row {
+  margin: 0;
 }
 
 .App h1 {
