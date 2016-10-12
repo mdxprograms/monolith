@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const ItemList = ({posts, sub}) => (
+export const ItemList = ({type, posts, sub}) => (
   <div className="row">
-    <section className="item-collection">
+    <section className={`item-collection item-collection--${type}`}>
       {posts.map(post =>
-        <a key={post.id} className="item" target="_blank" href={post.url}>
+        <a key={post.id} className={`item item--${type}`} target="_blank" href={post.url}>
           <h4 className="text-primary">{post.title}</h4>
           {post.thumbnail && post.thumbnail !== "default" && post.thumbnail !== "self" && post.thumbnail !== "nsfw" ?
             <img className="col-sm-12 img-responsive" src={post.thumbnail} alt=""/>

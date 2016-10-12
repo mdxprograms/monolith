@@ -11,15 +11,22 @@ class App extends Component {
     this.state = {
       posts: [],
       sub: null,
-      theme: 'paper'
+      theme: 'paper',
+      type: window.sessionStorage.getItem('type') || 'card'
     };
     this.fetchSub = this.fetchSub.bind(this);
     this.setTheme = this.setTheme.bind(this);
+    this.changeListType = this.changeListType.bind(this);
   }
 
   componentWillMount() {
     this.getSub();
     this.getTheme();
+  }
+
+  changeListType(type) {
+    this.setState({type: type});
+    window.sessionStorage.setItem('type', type);
   }
 
   getTheme() {
@@ -58,10 +65,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header theme={this.state.theme} setTheme={this.setTheme} fetchSub={this.fetchSub} sub={this.state.sub}/>
+        <Header type={this.state.type} changeListType={this.changeListType} theme={this.state.theme} setTheme={this.setTheme} fetchSub={this.fetchSub} sub={this.state.sub}/>
         {this.props.children ?
           this.props.children
-        : <ItemList posts={this.state.posts} sub={this.state.sub} />}
+        : <ItemList type={this.state.type} posts={this.state.posts} sub={this.state.sub} />}
       </div>
     );
   }
