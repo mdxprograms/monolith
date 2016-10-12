@@ -53,16 +53,13 @@ body {
 .item--list {
   align-items: center;
   border: none !important;
+  border-bottom: 1px solid !important;
   flex-direction: row !important;
   flex-flow: reverse !important;
   flex-wrap: wrap;
   box-shadow: none !important;
-  padding: 1rem !important;
+  padding: .2rem 1rem !important;
   width: 100% !important;
-}
-
-.item--list:hover {
-  background: inherit !important;
 }
 
 .item--list h4 {
@@ -70,9 +67,7 @@ body {
 }
 
 .item--list img {
-  padding: 0;
-  height: 50px;
-  width: 80px !important;
+  display: none;
 }
 
 .item {
@@ -90,7 +85,11 @@ body {
 }
 
 .item:hover {
-  background: lightblue;
+  background: steelblue;
+}
+
+.item:hover h4 {
+  color: #fff !important;
 }
 
 .item img {
