@@ -16,11 +16,24 @@ body {
 
 .navbar-nav {
   float: none;
+  width: 100%;
+}
+
+.navbar-nav .form-group {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
+  width: 100%;
 }
 
 .navbar .dropdown {
   padding: .5rem;
+}
+
+.navbar .dropdown .menu-list {
+  text-transform: uppercase;
 }
 
 .App {
