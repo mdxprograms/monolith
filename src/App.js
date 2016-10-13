@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import {Header} from './Header';
 import {ItemList} from './ItemList';
+import {SUBS} from './data';
 
 class App extends Component {
   constructor() {
@@ -11,12 +12,14 @@ class App extends Component {
     this.state = {
       posts: [],
       sub: null,
+      subs: SUBS,
       theme: 'paper',
       type: window.sessionStorage.getItem('type') || 'card'
     };
     this.fetchSub = this.fetchSub.bind(this);
     this.setTheme = this.setTheme.bind(this);
     this.changeListType = this.changeListType.bind(this);
+    this.addSub = this.addSub.bind(this);
   }
 
   componentWillMount() {
@@ -37,6 +40,17 @@ class App extends Component {
   setTheme(theme) {
     this.setState({theme: theme});
     window.sessionStorage.setItem('theme', theme);
+  }
+
+  addSub(e) {
+    let subVal = e.currentTarget.parentNode.children[0].value;
+    const subs = this.state.subs;
+    if (subVal.length) {
+      subs.push({key: subVal.toLowerCase(), value: subVal});
+      this.setState({subs: subs});
+      this.fetchSub(subVal);
+      e.currentTarget.parentNode.children[0].value = "";
+    }
   }
 
   getSub() {
@@ -65,7 +79,16 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header type={this.state.type} changeListType={this.changeListType} theme={this.state.theme} setTheme={this.setTheme} fetchSub={this.fetchSub} sub={this.state.sub}/>
+        <Header
+          addSub={this.addSub}
+          subList={this.state.subs}
+          type={this.state.type}
+          changeListType={this.changeListType}
+          theme={this.state.theme}
+          setTheme={this.setTheme}
+          fetchSub={this.fetchSub}
+          sub={this.state.sub} />
+
         {this.props.children ?
           this.props.children
         : <ItemList type={this.state.type} posts={this.state.posts} sub={this.state.sub} />}
